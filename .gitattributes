@@ -1,0 +1,15 @@
+text eol=lf
+
+*.java text
+*.gradle text
+
+*.cspec text
+*.ldefs text
+*.opinion text
+*.pspec text
+*.sinc text
+*.slaspec text
+*.properties text
+*.manifest text
+
+*.md text
