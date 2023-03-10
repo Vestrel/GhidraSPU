@@ -4,7 +4,7 @@ define space ram type=ram_space size=4 default;
 define space register type=register_space size=8;
 
 define register offset=0 size=8 [
-	lr sp r2 r3 r4 r5 r6 r7 r8 r9
+	r0 r1 r2 r3 r4 r5 r6 r7 r8 r9
 	r10 r11 r12 r13 r14 r15 r16 r17 r18 r19
 	r20 r21 r22 r23 r24 r25 r26 r27 r28 r29
 	r30 r31 r32 r33 r34 r35 r36 r37 r38 r39
@@ -107,7 +107,7 @@ attach variables [
 	RI18_RT
 ]
 [
-	lr sp r2 r3 r4 r5 r6 r7 r8 r9
+	r0 r1 r2 r3 r4 r5 r6 r7 r8 r9
 	r10 r11 r12 r13 r14 r15 r16 r17 r18 r19
 	r20 r21 r22 r23 r24 r25 r26 r27 r28 r29
 	r30 r31 r32 r33 r34 r35 r36 r37 r38 r39
@@ -1387,7 +1387,7 @@ define pcodeop __spu_clgti;
 	call absoluteAddress;
 }
 
-# bi lr
+# bi r0
 :bi RR_RA,BI_ED is RR_OP=424 & RR_RB & RR_RA & RR_RA=0 & RR_RT=0 & BI_ED
 {
 	if (BI_ED:1 == 1) goto <en>;
@@ -1505,7 +1505,7 @@ define pcodeop __spu_brhz;
 		goto targetAddress;
 }
 
-# biz rt,lr
+# biz rt,r0
 :biz RR_RT,RR_RA,BI_ED is RR_OP=296 & RR_RB & RR_RA & RR_RA=0 & RR_RT & BI_ED
 {
 	if (RR_RT:4 != 0) goto inst_next;
@@ -1545,7 +1545,7 @@ define pcodeop __spu_brhz;
 	goto [RR_RA];
 }
 
-# binz rt,lr
+# binz rt,r0
 :binz RR_RT,RR_RA,BI_ED is RR_OP=297 & RR_RB & RR_RA & RR_RA=0 & RR_RT & BI_ED
 {
 	if (RR_RT:4 == 0) goto inst_next;
@@ -1585,7 +1585,7 @@ define pcodeop __spu_brhz;
 	goto [RR_RA];
 }
 
-# bihz rt,lr
+# bihz rt,r0
 :bihz RR_RT,RR_RA,BI_ED is RR_OP=298 & RR_RB & RR_RA & RR_RA=0 & RR_RT & BI_ED
 {
 	if ((RR_RT:2) != 0) goto inst_next;
@@ -1625,7 +1625,7 @@ define pcodeop __spu_brhz;
 	goto [RR_RA];
 }
 
-# bihnz rt,lr
+# bihnz rt,r0
 :bihnz RR_RT,RR_RA,BI_ED is RR_OP=299 & RR_RB & RR_RA & RR_RA=0 & RR_RT & BI_ED
 {
 	if ((RR_RT:2) == 0) goto inst_next;
@@ -1869,7 +1869,7 @@ define pcodeop __spu_stop;
 :stop STOP_OP is RR_OP=0 & RR_RB=0 & STOP_OP
 {
 	__spu_stop(STOP_OP:4);
-	return [lr];
+	return [r0];
 }
 
 define pcodeop __spu_stopd;
@@ -1878,7 +1878,7 @@ define pcodeop __spu_stopd;
 :stopd RRR_RA,RRR_RB,RRR_RC is RR_OP=320 & RRR_RA & RRR_RB & RRR_RC
 {
 	__spu_stopd(RRR_RC, RRR_RA, RRR_RB);
-	return [lr];
+	return [r0];
 }
 
 # lnop
