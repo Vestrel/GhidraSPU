@@ -4,8 +4,8 @@
 	<programcounter register="pc"/>
 	<register_data>
 		<!-- TODO: expand vector_lane_sizes -->
-		<register name="r0" group="SPR" alias="lr" vector_lane_sizes="1,2,4"/>
-		<register name="r1" group="SPR" alias="sp" vector_lane_sizes="1,2,4"/>
+		<register name="lr" group="SPR" vector_lane_sizes="1,2,4"/>
+		<register name="sp" group="SPR" vector_lane_sizes="1,2,4"/>
 		<register name="r2" group="GPR" vector_lane_sizes="1,2,4"/>
 		<register name="r3" group="GPR" vector_lane_sizes="1,2,4"/>
 		<register name="r4" group="GPR" vector_lane_sizes="1,2,4"/>
